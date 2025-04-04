@@ -1,0 +1,32 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Audio Playback</title>
+</head>
+<body>
+  <h2>Audio will play shortly</h2>
+  <audio id="player" autoplay>
+    <source src="intro.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <script>
+    // Attempt to autoplay when the page loads
+    window.addEventListener('load', () => {
+      const audio = document.getElementById('player');
+      const playAttempt = audio.play();
+      if (playAttempt !== undefined) {
+        playAttempt
+          .then(() => {
+            console.log("Autoplay started successfully.");
+          })
+          .catch((error) => {
+            console.warn("Autoplay was blocked. Waiting for user interaction.", error);
+          });
+      }
+    });
+  </script>
+</body>
+</html>
